@@ -23,5 +23,6 @@ public class Main {
         Ticket[] tickets = {ticket1, ticket2, ticket3};
 
         Arrays.sort(tickets);
+
     }
 }
