@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TicketManagerTest {
+import java.util.Comparator;
+
+public class TicketManagerTest  {
 
     TicketRepository repo = new TicketRepository();
     TicketManager manager = new TicketManager(repo);
-
+    TicketTimeComparator timeComparator = new TicketTimeComparator();
     Ticket ticket1 = new Ticket(1, 100, "LED", "DME", 95);
     Ticket ticket2 = new Ticket(2, 250, "LED", "DME", 85);
     Ticket ticket3 = new Ticket(3, 150, "LED", "DME", 105);
@@ -51,4 +53,11 @@ public class TicketManagerTest {
         Ticket[] expected = {ticket4, ticket6, ticket5};
         Ticket[] actual = manager.findByDepArr("LED", "SVO");
     }
+
+    @Test
+    public void ShouldFindFast() {
+        Ticket[] expected = {ticket6, ticket4, ticket5};
+        Ticket[] actual = manager.findFast("LED", "SVO", timeComparator);
+    }
+
 }
