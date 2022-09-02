@@ -24,8 +24,7 @@ public class TicketRepository {
             tmp[tmp.length - 1] = ticket;
             tickets = tmp;
         } else {
-            throw new AlreadyExistsException(
-                    "Element with id: " + ticket.getId() + " is already exist");
+            throw new AlreadyExistsException("Element with id: " + ticket.getId() + " is already exist");
         }
     }
 
@@ -41,8 +40,7 @@ public class TicketRepository {
             }
         }
         if (pr == null) {
-            throw new NotFoundException(
-                    "Element with id: " + id + " not found");
+            throw new NotFoundException("Element with id: " + id + " not found");
         } else {
             Ticket[] tmp = new Ticket[tickets.length - 1];
             int copyToIndex = 0;
@@ -65,8 +63,7 @@ public class TicketRepository {
             }
         }
         if (tcDep == 0) {
-            throw new NotFoundException(
-                    "Departure Airport " + dep + " not found");
+            throw new NotFoundException("Departure Airport " + dep + " not found");
         } else {
             Ticket[] tmp = new Ticket[tcDep];
             int copyToIndex = 0;
@@ -89,8 +86,7 @@ public class TicketRepository {
             }
         }
         if (tcArr == 0) {
-            throw new NotFoundException(
-                    "Arrive Airport " + arr + " not found");
+            throw new NotFoundException("Arrive Airport " + arr + " not found");
         } else {
             Ticket[] tmp = new Ticket[tcArr];
             int copyToIndex = 0;

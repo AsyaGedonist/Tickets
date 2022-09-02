@@ -1,5 +1,7 @@
 package ticket;
 
+import java.util.Arrays;
+
 public class TicketManager {
     private TicketRepository repo;
 
@@ -7,17 +9,18 @@ public class TicketManager {
         this.repo = repo;
     }
 
-    public void saveManager(Ticket ticket){
+    public void saveManager(Ticket ticket) {
         repo.save(ticket);
     }
 
-    public Ticket[] findAll(){
+    public Ticket[] findAll() {
         return repo.getItems();
     }
 
     public Ticket[] findByDepArr(String from, String to) {
         repo.findByDep(from);
         Ticket[] tickets = repo.findByArr(to);
+        Arrays.sort(tickets);
         return tickets;
     }
 

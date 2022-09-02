@@ -13,7 +13,7 @@ public class TicketTest {
     Ticket ticket4 = new Ticket(4, 150, "LED", "SVO", 95);
 
     @Test
-    public void Sort(){
+    public void Sort() {
 
         Ticket[] tickets = {ticket1, ticket2, ticket3, ticket4};
         Ticket[] expected = {ticket1, ticket2, ticket4, ticket3};
@@ -23,8 +23,6 @@ public class TicketTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
-
-
 
 
 }
