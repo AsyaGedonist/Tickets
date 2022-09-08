@@ -15,7 +15,7 @@ public class TicketManagerTest {
     Ticket ticket4 = new Ticket(4, 150, "LED", "SVO", 95);
     Ticket ticket5 = new Ticket(5, 350, "LED", "SVO", 105);
     Ticket ticket6 = new Ticket(6, 250, "LED", "SVO", 85);
-    Ticket ticket7 = new Ticket(7, 100, "DME", "LED", 95);
+    Ticket ticket7 = new Ticket(7, 100, "DME", "SVO", 95);
     Ticket ticket8 = new Ticket(8, 150, "DME", "LED", 85);
     Ticket ticket9 = new Ticket(9, 250, "DME", "LED", 105);
     Ticket ticket10 = new Ticket(10, 150, "SVO", "LED", 95);
@@ -50,5 +50,18 @@ public class TicketManagerTest {
     public void ShouldFind() {
         Ticket[] expected = {ticket4, ticket6, ticket5};
         Ticket[] actual = manager.findByDepArr("LED", "SVO");
+    }
+
+   @Test
+    public void NoDep() {
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            manager.findByDepArr("OOO", "SVO");
+        });
+    }
+    @Test
+    public void NoArr() {
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            manager.findByDepArr("LED", "OOO");
+        });
     }
 }
