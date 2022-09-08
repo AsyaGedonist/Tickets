@@ -6,7 +6,6 @@ public class TicketRepository {
 
     public TicketRepository() {
     }
-
     public void save(Ticket ticket) {
         int haveId = 0;
         for (Ticket tick : tickets) {
@@ -46,52 +45,6 @@ public class TicketRepository {
             int copyToIndex = 0;
             for (Ticket ticket : tickets) {
                 if (ticket.getId() != id) {
-                    tmp[copyToIndex] = ticket;
-                    copyToIndex++;
-                }
-            }
-            tickets = tmp;
-            return tickets;
-        }
-    }
-
-    public Ticket[] findByDep(String dep) {
-        int tcDep = 0;
-        for (Ticket ticket : tickets) {
-            if (ticket.getDeparture() == dep) {
-                tcDep++;
-            }
-        }
-        if (tcDep == 0) {
-            throw new NotFoundException("Departure Airport " + dep + " not found");
-        } else {
-            Ticket[] tmp = new Ticket[tcDep];
-            int copyToIndex = 0;
-            for (Ticket ticket : tickets) {
-                if (ticket.getDeparture() == dep) {
-                    tmp[copyToIndex] = ticket;
-                    copyToIndex++;
-                }
-            }
-            tickets = tmp;
-            return tickets;
-        }
-    }
-
-    public Ticket[] findByArr(String arr) {
-        int tcArr = 0;
-        for (Ticket ticket : tickets) {
-            if (ticket.getArrived() == arr) {
-                tcArr++;
-            }
-        }
-        if (tcArr == 0) {
-            throw new NotFoundException("Arrive Airport " + arr + " not found");
-        } else {
-            Ticket[] tmp = new Ticket[tcArr];
-            int copyToIndex = 0;
-            for (Ticket ticket : tickets) {
-                if (ticket.getArrived() == arr) {
                     tmp[copyToIndex] = ticket;
                     copyToIndex++;
                 }
